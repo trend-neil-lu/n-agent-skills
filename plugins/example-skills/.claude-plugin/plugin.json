@@ -1,0 +1,20 @@
+{
+  "name": "example-skills",
+  "version": "1.0.0",
+  "description": "A comprehensive collection of example skills demonstrating plugin structure, best practices, and common use cases for Claude Code development",
+  "author": {
+    "name": "Neil Lu"
+  },
+  "repository": "https://github.com/trend-neil-lu/n-agent-skills",
+  "homepage": "https://github.com/trend-neil-lu/n-agent-skills#readme",
+  "license": "MIT",
+  "keywords": [
+    "example",
+    "template",
+    "demo",
+    "skills",
+    "code-review",
+    "security",
+    "documentation"
+  ]
+}

@@ -1,0 +1,117 @@
+name: Validate Plugins
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run pre-commit
+        uses: pre-commit/action@v3.0.1
+
+  validate-schema:
+    name: Validate Schema
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ajv-cli
+        run: npm install -g ajv-cli ajv-formats
+
+      - name: Validate marketplace.json against schema
+        run: |
+          ajv validate \
+            -s .claude-plugin/schemas/marketplace.schema.json \
+            -d .claude-plugin/marketplace.json \
+            --spec=draft7 \
+            -c ajv-formats
+
+  validate-plugins:
+    name: Validate Plugins
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Validate all plugins
+        run: |
+          set -e
+          errors=0
+
+          for plugin_dir in plugins/*/; do
+            plugin_name=$(basename "$plugin_dir")
+
+            # Skip template
+            if [[ "$plugin_name" == "_template" ]]; then
+              continue
+            fi
+
+            echo "=== Validating plugin: $plugin_name ==="
+
+            # Run validation script
+            if ! ./scripts/validate-plugin.sh "$plugin_dir"; then
+              errors=$((errors + 1))
+            fi
+
+            echo ""
+          done
+
+          if [[ $errors -gt 0 ]]; then
+            echo "❌ $errors plugin(s) failed validation"
+            exit 1
+          fi
+
+          echo "✅ All plugins validated successfully"
+
+  check-sync:
+    name: Check Plugin Sync
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check marketplace and plugin.json versions match
+        run: |
+          set -e
+          errors=0
+
+          # Get plugins from marketplace
+          jq -r '.plugins[] | "\(.name)|\(.version)"' .claude-plugin/marketplace.json | \
+          while IFS='|' read -r name version; do
+            plugin_json="plugins/$name/.claude-plugin/plugin.json"
+
+            if [[ ! -f "$plugin_json" ]]; then
+              echo "❌ Plugin $name in marketplace but plugin.json not found"
+              errors=$((errors + 1))
+              continue
+            fi
+
+            plugin_version=$(jq -r '.version // "unknown"' "$plugin_json")
+
+            if [[ "$version" != "$plugin_version" ]]; then
+              echo "❌ Version mismatch for $name: marketplace=$version, plugin.json=$plugin_version"
+              errors=$((errors + 1))
+            else
+              echo "✅ $name: version $version synced"
+            fi
+          done
+
+          if [[ $errors -gt 0 ]]; then
+            exit 1
+          fi

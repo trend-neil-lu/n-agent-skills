@@ -1,0 +1,11 @@
+{
+  "name": "{{PLUGIN_NAME}}",
+  "version": "1.0.0",
+  "description": "{{PLUGIN_DESCRIPTION}}",
+  "author": {
+    "name": "{{AUTHOR_NAME}}"
+  },
+  "repository": "https://github.com/{{GITHUB_USER}}/{{REPO_NAME}}",
+  "license": "MIT",
+  "keywords": ["claude-code", "plugin"]
+}

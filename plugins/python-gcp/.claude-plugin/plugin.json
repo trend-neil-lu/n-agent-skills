@@ -1,0 +1,19 @@
+{
+  "name": "python-gcp",
+  "version": "1.0.0",
+  "description": "Python patterns for GCP integration including Cloud Logging, Metadata Server, Pub/Sub error handling, and Cloud Trace middleware",
+  "author": {
+    "name": "Neil Lu"
+  },
+  "repository": "https://github.com/trend-neil-lu/n-agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "python",
+    "gcp",
+    "google-cloud",
+    "cloud-logging",
+    "cloud-trace",
+    "pubsub",
+    "metadata-server"
+  ]
+}

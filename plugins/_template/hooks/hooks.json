@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/post-edit.sh \"$CLAUDE_TOOL_INPUT_file_path\""
+          }
+        ]
+      }
+    ]
+  }
+}

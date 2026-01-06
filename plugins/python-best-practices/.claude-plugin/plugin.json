@@ -1,0 +1,19 @@
+{
+  "name": "python-best-practices",
+  "version": "1.0.0",
+  "description": "Pure Python best practices and patterns including structured logging, configuration management, error handling, and request context",
+  "author": {
+    "name": "Neil Lu"
+  },
+  "repository": "https://github.com/trend-neil-lu/n-agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "python",
+    "best-practices",
+    "logging",
+    "configuration",
+    "error-handling",
+    "middleware",
+    "patterns"
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "$schema": "./schemas/marketplace.schema.json",
+  "name": "n-agent-skills",
+  "version": "1.0.0",
+  "owner": {
+    "name": "Neil Lu"
+  },
+  "metadata": {
+    "description": "A curated collection of Claude Code plugins and skills for enhanced AI-assisted development",
+    "homepage": "https://github.com/trend-neil-lu/n-agent-skills",
+    "license": "MIT",
+    "keywords": [
+      "claude-code",
+      "plugins",
+      "skills",
+      "ai-development",
+      "automation"
+    ]
+  },
+  "categories": [
+    {
+      "id": "utilities",
+      "name": "Utilities",
+      "description": "General utility tools and helpers",
+      "icon": "🔧"
+    },
+    {
+      "id": "development",
+      "name": "Development",
+      "description": "Development workflow tools",
+      "icon": "💻"
+    },
+    {
+      "id": "documentation",
+      "name": "Documentation",
+      "description": "Documentation generation tools",
+      "icon": "📚"
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "description": "Security analysis tools",
+      "icon": "🛡️"
+    },
+    {
+      "id": "testing",
+      "name": "Testing",
+      "description": "Testing and QA tools",
+      "icon": "✅"
+    },
+    {
+      "id": "devops",
+      "name": "DevOps",
+      "description": "CI/CD and infrastructure tools",
+      "icon": "🚀"
+    }
+  ],
+  "plugins": [
+    {
+      "name": "example-skills",
+      "source": "./plugins/example-skills",
+      "description": "Example skills demonstrating plugin structure and best practices",
+      "version": "1.0.0",
+      "author": {
+        "name": "Neil Lu"
+      },
+      "keywords": [
+        "example",
+        "template",
+        "demo",
+        "skills",
+        "code-review",
+        "security",
+        "documentation"
+      ],
+      "category": "utilities"
+    },
+    {
+      "name": "gcp-cloudrun",
+      "source": "./plugins/gcp-cloudrun",
+      "description": "GCP Cloud Run Python services/jobs with OpenTelemetry and GitHub Actions CI/CD",
+      "version": "1.0.0",
+      "author": {
+        "name": "Neil Lu"
+      },
+      "keywords": [
+        "gcp",
+        "cloud-run",
+        "python",
+        "opentelemetry",
+        "cloudrun",
+        "google-cloud",
+        "serverless",
+        "github-actions"
+      ],
+      "category": "devops"
+    },
+    {
+      "name": "python-gcp",
+      "source": "./plugins/python-gcp",
+      "description": "Python patterns for GCP integration: Cloud Logging, Metadata Server, Pub/Sub error handling, Cloud Trace",
+      "version": "1.0.0",
+      "author": {
+        "name": "Neil Lu"
+      },
+      "keywords": [
+        "python",
+        "gcp",
+        "google-cloud",
+        "cloud-logging",
+        "cloud-trace",
+        "pubsub",
+        "metadata-server"
+      ],
+      "category": "devops"
+    },
+    {
+      "name": "python-best-practices",
+      "source": "./plugins/python-best-practices",
+      "description": "Pure Python best practices: structured logging, config singleton, error hierarchy, request context",
+      "version": "1.0.0",
+      "author": {
+        "name": "Neil Lu"
+      },
+      "keywords": [
+        "python",
+        "best-practices",
+        "logging",
+        "configuration",
+        "error-handling",
+        "middleware",
+        "patterns"
+      ],
+      "category": "development"
+    },
+    {
+      "name": "skill-marketplace-tools",
+      "source": "./plugins/skill-marketplace-tools",
+      "description": "Tools for creating and managing Claude Code plugin marketplaces",
+      "version": "1.0.0",
+      "author": {
+        "name": "Neil Lu"
+      },
+      "keywords": [
+        "claude-code",
+        "plugin",
+        "marketplace",
+        "skills",
+        "plugin-development",
+        "scaffolding"
+      ],
+      "category": "utilities"
+    }
+  ]
+}
